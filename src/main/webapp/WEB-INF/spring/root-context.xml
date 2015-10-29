@@ -1,7 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+    xmlns:task="http://www.springframework.org/schema/task"
+    xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	 http://www.springframework.org/schema/beans/spring-beans.xsd
+	 http://www.springframework.org/schema/aop 
+	 http://www.springframework.org/schema/aop/spring-aop.xsd
+	 http://www.springframework.org/schema/task 
+	 http://www.springframework.org/schema/task/spring-task.xsd
+     http://www.springframework.org/schema/context
+     http://www.springframework.org/schema/context/spring-context.xsd 
+     http://www.springframework.org/schema/tx 
+     http://www.springframework.org/schema/tx/spring-tx.xsd
+     http://www.springframework.org/schema/data/jpa 
+     http://www.springframework.org/schema/data/jpa/spring-jpa.xsd
+      " default-lazy-init="true">
 	
 	<!-- Root Context: defines shared resources visible to all other web components -->
 
@@ -20,4 +37,68 @@
 		http://localhost:8080/#forms and form.jsp for examples
 	-->
 	<bean id="requestDataValueProcessor" class="org.springframework.security.web.servlet.support.csrf.CsrfRequestDataValueProcessor"/>
+	
+	
+	
+	<!-- spring启动时扫描项目路径下的properties文件,后续用${key }方式取出对应值,这样可以代码解耦和，后续只需修改properties文件即可 -->
+    <bean id="propertyPlaceholderConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="locations">
+            <list>
+                <!-- dataSourse连接池相关属性 -->
+                <value>classpath:jdbc.properties</value>
+            </list>
+        </property>
+    </bean>
+
+    <!--数据源 -->
+    <bean id="dataSource" class="com.jolbox.bonecp.BoneCPDataSource"  
+        destroy-method="close">  
+        <!-- 数据库驱动 -->  
+        <property name="driverClass" value="${db.driverClass}" />  
+        <!-- 相应驱动的jdbcUrl,你懂的 -->  
+        <property name="jdbcUrl" value="${db.jdbcUrl}" />  
+        <!-- 数据库的用户名 -->  
+        <property name="username" value="${db.username}" />  
+        <!-- 数据库的密码 -->  
+        <property name="password" value="${db.password}" />  
+
+    </bean>  
+
+      <!-- Hibernate对Jpa的实现 -->
+    <bean id="hibernateJpaVendorAdapter" class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter"/>
+
+    <context:component-scan base-package="org.springframework.samples"/>
+
+    <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="jpaVendorAdapter" ref="hibernateJpaVendorAdapter"/>
+        <property name="packagesToScan" value="org.springframework.samples"/>
+        <property name="jpaProperties">
+            <props>
+                <prop key="hibernate.dialect">${hibernate.dialect}</prop>
+                <prop key="hibernate.ejb.naming_strategy">${hibernate.ejb.naming_strategy}</prop>
+                <prop key="hibernate.show_sql">${hibernate.show_sql}</prop>
+                <prop key="hibernate.format_sql">${hibernate.format_sql}</prop>
+            </props>
+        </property>
+    </bean>
+
+     <!-- Jpa 事务管理器  -->
+    <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+        <property name="entityManagerFactory" ref="entityManagerFactory"/>
+    </bean>
+
+
+    <!-- 开启注解事务 -->
+    <tx:annotation-driven transaction-manager="transactionManager" proxy-target-class="true" />
+
+     <!-- 重要配置：启用扫描并自动创建代理的功能  -->
+    <jpa:repositories 
+        base-package="org.springframework.samples"  
+        transaction-manager-ref="transactionManager" 
+        entity-manager-factory-ref="entityManagerFactory"/>
+
+     <!-- 启动对@AspectJ（面向切面）注解的支持 --> 
+    <aop:aspectj-autoproxy />
+	
 </beans>

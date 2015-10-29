@@ -15,7 +15,6 @@ import java.util.TimeZone;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
@@ -33,6 +32,7 @@ public class FormControllerTests {
 		this.mockMvc = standaloneSetup(new FormController()).setViewResolvers(viewResolver).build();
 	}
 
+	@SuppressWarnings("deprecation")
 	@Test
 	public void submitSuccess() throws Exception {
 		String timezone = getTimezone(1941, 12, 16); 

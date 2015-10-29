@@ -14,8 +14,8 @@ public class SimpleControllerTests {
 		standaloneSetup(new SimpleController()).build()
 			.perform(get("/simple"))
 			.andExpect(status().isOk())
-			.andExpect(content().contentType("text/plain;charset=ISO-8859-1"))
-			.andExpect(content().string("Hello world!"));
+			.andExpect(content().contentType("text/plain;charset=utf-8"))
+			.andExpect(content().string("Hello world!Αυ½ά"));
 	}
 
 }

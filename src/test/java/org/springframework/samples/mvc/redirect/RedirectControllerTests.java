@@ -14,6 +14,7 @@ public class RedirectControllerTests {
 
 	private MockMvc mockMvc;
 
+	@SuppressWarnings("deprecation")
 	@Before
 	public void setup() throws Exception {
 		this.mockMvc = standaloneSetup(new RedirectController(new DefaultFormattingConversionService()))
