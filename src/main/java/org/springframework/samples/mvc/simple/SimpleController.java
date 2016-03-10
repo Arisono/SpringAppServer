@@ -15,6 +15,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -26,7 +27,8 @@ public class SimpleController {
 	@Resource
 	private NewsService newsService;
 	
-	@RequestMapping(value="/simple/save/{name}/{password}", produces = "application/json; charset=utf-8")
+	@RequestMapping(value="/simple/save/{name}/{password}", 
+			produces = "application/json; charset=utf-8",method=RequestMethod.POST)
 	public  String simpleSave(@PathVariable String name,@PathVariable String password) {
 		User user=new User();
 		user.setUsername(name);
@@ -44,11 +46,40 @@ public class SimpleController {
 		return  "redirect:/simple/find/"+user2.getId();
 	}
 	
+	@RequestMapping(value="/simple1/save/", 
+			produces = "application/json; charset=utf-8",method=RequestMethod.POST)
+	public  Object simple1Save(@RequestParam String name,@RequestParam String password) {
+		User user2=new User();
+		try {
+			User user=new User();
+			user.setUsername(name);
+			user.setPassword(password);
+			userService.saveUser(user);
+			user2 = userService.findOneUser(name, password);
+			
+			News news=new News();
+			news.setTitle("美丽新世界");
+			news.setContent("大美青海");
+			news.setUserId(user2.getId());
+//	    news.setUserId(user2);
+			newsService.save(news);
+		} catch (Exception e) {
+			System.out.println("程序内部异常！");
+		}
+//	     "保存成功！查询接口  localhost:8080/spring-mvc-showcase/simple/find/"+user2.getId();
+		return  "redirect:/simple/find/"+user2.getId();
+	}
 	
 	
-	@RequestMapping(value="/simple/find/{id}")
-	public @ResponseBody User simpleFind(@PathVariable Long id) {
-		User user=userService.findOneUser(id);
+	@RequestMapping(value="/simple/find/{id}",method=RequestMethod.POST)
+	public @ResponseBody Object simpleFind(@PathVariable Long id) {
+		User user=new User();
+		try {
+			user = userService.findOneUser(id);
+		} catch (Exception e) {
+			return "程序异常！";
+					
+		}
 		return user;
 	}
 
@@ -109,9 +140,9 @@ public class SimpleController {
 	    //返回String  
 	    //通过model进行使用  
 	    @RequestMapping(value="/index4",method = RequestMethod.GET)  
-	    public String index(Model model) {  
+	    public @ResponseBody String index(Model model) {  
 	     
-	        return "专业万岁";  
+	        return "jsp";  
 	    }  
 	      
 

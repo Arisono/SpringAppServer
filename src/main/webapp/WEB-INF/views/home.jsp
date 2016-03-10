@@ -563,88 +563,187 @@ $(document).ready(function() {
 		var data = form.hasClass("invalid") ?
 				"{ \"foo\": \"bar\" }" : 
 				"{ \"foo\": \"bar\", \"fruit\": \"apple\" }";
-		$.ajax({ type: "POST", url: form.attr("action"), data: data, contentType: "application/json", dataType: "text", success: function(text) { MvcUtil.showSuccessResponse(text, button); }, error: function(xhr) { MvcUtil.showErrorResponse(xhr.responseText, button); }});
-		return false;
-	});
-
-	$("a.writeJsonLink").click(function() {
-		var link = $(this);
-		$.ajax({ url: this.href,
-			beforeSend: function(req) {
-				if (!this.url.match(/\.json$/)) {
-					req.setRequestHeader("Accept", "application/json");
-				}
-			},
-			success: function(json) {
-				MvcUtil.showSuccessResponse(JSON.stringify(json), link);
-			},
-			error: function(xhr) {
-				MvcUtil.showErrorResponse(xhr.responseText, link);
-			}});
-		return false;
-	});
-
-	$("#readAtom").submit(function() {
-		var form = $(this);
-		var button = form.children(":first");
-		$.ajax({ type: "POST", url: form.attr("action"), data: '<?xml version="1.0" encoding="UTF-8"?> <feed xmlns="http://www.w3.org/2005/Atom"><title>My Atom feed</title></feed>', contentType: "application/atom+xml", dataType: "text", success: function(text) { MvcUtil.showSuccessResponse(text, button); }, error: function(xhr) { MvcUtil.showErrorResponse(xhr.responseText, button); }});
-		return false;
-	});
-
-	$("#writeAtom").click(function() {
-		var link = $(this);
-		$.ajax({ url: link.attr("href"),
-			beforeSend: function(req) { 
-				req.setRequestHeader("Accept", "application/atom+xml");
-			},
-			success: function(feed) {
-				MvcUtil.showSuccessResponse(MvcUtil.xmlencode(feed), link);
-			},
-			error: function(xhr) { 
-				MvcUtil.showErrorResponse(xhr.responseText, link);
-			}
-		});
-		return false;
-	});
 	
-	$("#readRss").submit(function() {
-		var form = $(this);
-		var button = form.children(":first");
-		$.ajax({ type: "POST", url: form.attr("action"), data: '<?xml version="1.0" encoding="UTF-8"?> <rss version="2.0"><channel><title>My RSS feed</title></channel></rss>', contentType: "application/rss+xml", dataType: "text", success: function(text) { MvcUtil.showSuccessResponse(text, button); }, error: function(xhr) { MvcUtil.showErrorResponse(xhr.responseText, button); }});
-		return false;
-	});
-
-	$("#writeRss").click(function() {
-		var link = $(this);	
-		$.ajax({ url: link.attr("href"),
-			beforeSend: function(req) { 
-				req.setRequestHeader("Accept", "application/rss+xml");
+		$.ajax({
+			type : "POST",
+			url : form
+					.attr("action"),
+			data : data,
+			contentType : "application/json",
+			dataType : "text",
+			success : function(text) {
+				MvcUtil
+						.showSuccessResponse(
+								text,
+								button);
 			},
-			success: function(feed) {
-				MvcUtil.showSuccessResponse(MvcUtil.xmlencode(feed), link);
-			},
-			error: function(xhr) { 
-				MvcUtil.showErrorResponse(xhr.responseText, link);
+			error : function(xhr) {
+				MvcUtil
+						.showErrorResponse(
+								xhr.responseText,
+								button);
 			}
 		});
-		return false;
-	});
+			return false;
+		});
 
-	$("#byHeader").click(function(){
-		var link = $(this);
-		$.ajax({ url: this.href, dataType: "text", beforeSend: function(req) { req.setRequestHeader("FooHeader", "foo"); }, success: function(form) { MvcUtil.showSuccessResponse(form, link); }, error: function(xhr) { MvcUtil.showErrorResponse(xhr.responseText, link); }});
-		return false;
-	});
+						$("a.writeJsonLink").click(
+								function() {
+									var link = $(this);
+									$.ajax({
+										url : this.href,
+										beforeSend : function(req) {
+											if (!this.url.match(/\.json$/)) {
+												req.setRequestHeader("Accept",
+														"application/json");
+											}
+										},
+										success : function(json) {
+											MvcUtil.showSuccessResponse(JSON
+													.stringify(json), link);
+										},
+										error : function(xhr) {
+											MvcUtil.showErrorResponse(
+													xhr.responseText, link);
+										}
+									});
+									return false;
+								});
 
-	// Include CSRF token as header in JQuery AJAX requests
-	// See http://docs.spring.io/spring-security/site/docs/3.2.x/reference/htmlsingle/#csrf-include-csrf-token-ajax
-	var token = $("meta[name='_csrf']").attr("content");
-	var header = $("meta[name='_csrf_header']").attr("content");
-	$(document).ajaxSend(function(e, xhr, options) {
-		xhr.setRequestHeader(header, token);
-	});
+						$("#readAtom")
+								.submit(
+										function() {
+											var form = $(this);
+											var button = form
+													.children(":first");
+											$
+													.ajax({
+														type : "POST",
+														url : form
+																.attr("action"),
+														data : '<?xml version="1.0" encoding="UTF-8"?> <feed xmlns="http://www.w3.org/2005/Atom"><title>My Atom feed</title></feed>',
+														contentType : "application/atom+xml",
+														dataType : "text",
+														success : function(text) {
+															MvcUtil
+																	.showSuccessResponse(
+																			text,
+																			button);
+														},
+														error : function(xhr) {
+															MvcUtil
+																	.showErrorResponse(
+																			xhr.responseText,
+																			button);
+														}
+													});
+											return false;
+										});
 
-});
+						$("#writeAtom").click(
+								function() {
+									var link = $(this);
+									$.ajax({
+										url : link.attr("href"),
+										beforeSend : function(req) {
+											req.setRequestHeader("Accept",
+													"application/atom+xml");
+										},
+										success : function(feed) {
+											MvcUtil.showSuccessResponse(MvcUtil
+													.xmlencode(feed), link);
+										},
+										error : function(xhr) {
+											MvcUtil.showErrorResponse(
+													xhr.responseText, link);
+										}
+									});
+									return false;
+								});
+
+						$("#readRss")
+								.submit(
+										function() {
+											var form = $(this);
+											var button = form
+													.children(":first");
+											$
+													.ajax({
+														type : "POST",
+														url : form
+																.attr("action"),
+														data : '<?xml version="1.0" encoding="UTF-8"?> <rss version="2.0"><channel><title>My RSS feed</title></channel></rss>',
+														contentType : "application/rss+xml",
+														dataType : "text",
+														success : function(text) {
+															MvcUtil
+																	.showSuccessResponse(
+																			text,
+																			button);
+														},
+														error : function(xhr) {
+															MvcUtil
+																	.showErrorResponse(
+																			xhr.responseText,
+																			button);
+														}
+													});
+											return false;
+										});
+
+						$("#writeRss").click(
+								function() {
+									var link = $(this);
+									$.ajax({
+										url : link.attr("href"),
+										beforeSend : function(req) {
+											req.setRequestHeader("Accept",
+													"application/rss+xml");
+										},
+										success : function(feed) {
+											MvcUtil.showSuccessResponse(MvcUtil
+													.xmlencode(feed), link);
+										},
+										error : function(xhr) {
+											MvcUtil.showErrorResponse(
+													xhr.responseText, link);
+										}
+									});
+									return false;
+								});
+
+						$("#byHeader").click(
+								function() {
+									var link = $(this);
+									$.ajax({
+										url : this.href,
+										dataType : "text",
+										beforeSend : function(req) {
+											req.setRequestHeader("FooHeader",
+													"foo");
+										},
+										success : function(form) {
+											MvcUtil.showSuccessResponse(form,
+													link);
+										},
+										error : function(xhr) {
+											MvcUtil.showErrorResponse(
+													xhr.responseText, link);
+										}
+									});
+									return false;
+								});
+
+						// Include CSRF token as header in JQuery AJAX requests
+						// See http://docs.spring.io/spring-security/site/docs/3.2.x/reference/htmlsingle/#csrf-include-csrf-token-ajax
+						var token = $("meta[name='_csrf']").attr("content");
+						var header = $("meta[name='_csrf_header']").attr(
+								"content");
+						$(document).ajaxSend(function(e, xhr, options) {
+							xhr.setRequestHeader(header, token);
+						});
+
+					});
 </script>
 </body>
 </html>
