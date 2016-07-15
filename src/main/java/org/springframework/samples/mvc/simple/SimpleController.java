@@ -1,23 +1,31 @@
 package org.springframework.samples.mvc.simple;
 
+import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
+import org.springframework.http.HttpHeaders;
 import org.springframework.samples.mvc.jpa.entity.News;
 import org.springframework.samples.mvc.jpa.entity.User;
 import org.springframework.samples.mvc.jpa.service.NewsService;
 import org.springframework.samples.mvc.jpa.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.HttpRequestDeviceUtils;
+import org.springframework.util.StringUtils;
+import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+
 
 @Controller("SimpleController")
 public class SimpleController {
@@ -26,6 +34,54 @@ public class SimpleController {
 	
 	@Resource
 	private NewsService newsService;
+	
+	/**
+	 * 获取客户的请求头信息
+	 * ip地址,请求头信息,参数,缓存等等
+	 */
+	@RequestMapping(value="/client/info")
+	public @ResponseBody Map<String,Object> getClientBaseInfo(
+			HttpServletRequest request,
+			@CookieValue(value="JSESSIONID",required=false) String sessionId) {
+        Map<String,Object> result=new HashMap<String, Object>();
+        Map<String,Object> resultBody=new HashMap<String, Object>();
+        String ipAddress=getIPAddress(request);//获取客户端ip地址
+        Enumeration headerNames = request.getHeaderNames();
+        while (headerNames.hasMoreElements()) {
+            String key = (String) headerNames.nextElement();
+            String value = request.getHeader(key);
+            result.put(key, value);
+        }
+        boolean isMobile=HttpRequestDeviceUtils.isMobileDevice(request);
+        resultBody.put("isMoblie", isMobile);
+        resultBody.put("headers",result);
+        resultBody.put("sessionId", sessionId);
+        resultBody.put("ip", ipAddress);
+        HttpSession httpSession=request.getSession();
+        httpSession.setAttribute("sessionId", sessionId);
+		return resultBody;
+	}
+	
+	private String getIPAddress(HttpServletRequest request){
+	  String ip = request.getHeader("X-Real-IP");
+	  if (!StringUtils.isEmpty(ip) && !"unknown".equalsIgnoreCase(ip)) {
+	        return ip;
+	        }
+	        ip = request.getHeader("X-Forwarded-For");
+	        if (!StringUtils.isEmpty(ip) && !"unknown".equalsIgnoreCase(ip)) {
+	        // 多次反向代理后会有多个IP值，第一个为真实IP。
+	        int index = ip.indexOf(',');
+	        if (index != -1) {
+	        return ip.substring(0, index);
+	        } else {
+	        return ip;
+	        }
+	        } else {
+	        return request.getRemoteAddr();
+	        }
+	}
+	
+
 	
 	@RequestMapping(value="/simple/save/{name}/{password}", 
 			produces = "application/json; charset=utf-8",method=RequestMethod.POST)
@@ -85,11 +141,7 @@ public class SimpleController {
 
 	@RequestMapping(value="/simple",produces="text/plain;charset=utf-8")
 	public @ResponseBody String simple() {
-		List<User> users=userService.findAllUsers();
-		for (int i = 0; i < users.size(); i++) {
-			System.out.println(users.get(i).getUsername());
-		}
-		return "Hello world!刘杰";
+		return "Hello world!";
 	}
 	
 	@RequestMapping(value="/simple/map")

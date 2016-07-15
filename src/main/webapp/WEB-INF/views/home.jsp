@@ -448,6 +448,7 @@
 		</ul>
 	</div>
 </div>
+<!--javaScript-->
 <script type="text/javascript" src="<c:url value="/resources/jquery/1.6/jquery.js" />"></script>
 <script type="text/javascript" src="<c:url value="/resources/jqueryform/2.8/jquery.form.js" />"></script>
 <script type="text/javascript" src="<c:url value="/resources/jqueryui/1.8/jquery.ui.core.js" />"></script>
