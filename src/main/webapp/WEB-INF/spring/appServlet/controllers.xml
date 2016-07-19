@@ -11,8 +11,9 @@
 		http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
 	<!-- Maps '/' requests to the 'home' view -->
+	<!-- 首页路径 -->
 	<mvc:view-controller path="/" view-name="home"/>
-	
+	<!-- 扫描路径 -->
 	<context:component-scan base-package="org.springframework.samples.mvc" />
-	 
+	<context:component-scan base-package="org.springframework.session" />
 </beans>
