@@ -2,7 +2,7 @@ package org.springframework.util;
 
 import javax.servlet.http.HttpServletRequest;
 
-public class HttpRequestDeviceUtils {  
+public class HttpRequestUtils {  
 	  
 	  
     /**Wap网关Via头信息中特有的描述信息*/  
@@ -69,6 +69,8 @@ public class HttpRequestDeviceUtils {
     "IEMobile",//Windows CE手机自带浏览器，  
     "WAP2.0"//支持wap 2.0的  
     };  
+    
+    
     /** 
     * 根据当前请求的特征，判断该请求是否来自手机终端，主要检测特殊的头信息，以及user-Agent这个header 
     * @param request http请求 

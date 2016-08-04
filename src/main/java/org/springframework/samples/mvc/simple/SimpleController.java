@@ -17,7 +17,7 @@ import org.springframework.samples.mvc.jpa.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.DateFormatUtil;
-import org.springframework.util.HttpRequestDeviceUtils;
+import org.springframework.util.HttpRequestUtils;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -59,7 +59,7 @@ public class SimpleController {
 		}
 		request.getHeader("cache-control");
 
-		boolean isMobile = HttpRequestDeviceUtils.isMobileDevice(request);
+		boolean isMobile = HttpRequestUtils.isMobileDevice(request);
 		resultBody.put("isMoblie", isMobile);
 		resultBody.put("headers", result);
 		resultBody.put("JSESSIONID", sessionId);

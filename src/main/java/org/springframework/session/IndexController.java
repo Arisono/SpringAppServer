@@ -17,4 +17,10 @@ public class IndexController {
 		return "me/index";
 	}
 	
+
+	
+	@RequestMapping(value = "/freez")
+	public String freez(HttpServletRequest request) {
+		return "me/freez-table-demo";
+	}
 }

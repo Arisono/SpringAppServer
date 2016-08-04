@@ -132,6 +132,10 @@
   </div>
    <div id="accordion_right_center" style="width:30%; float:right;padding-left:5px">
    <h3>文献</h3>
+   <div>
+   <li><a href="/spring-mvc-showcase/freez">jquery 固定首行首列 表格</a></li>
+   <li>Milk</li>
+   </div>
   </div>
   </div>
   <div id="tabs-2">

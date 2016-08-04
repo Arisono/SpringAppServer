@@ -16,4 +16,5 @@
 	<!-- 扫描路径 -->
 	<context:component-scan base-package="org.springframework.samples.mvc" />
 	<context:component-scan base-package="org.springframework.session" />
+	<context:component-scan base-package="org.springframework.api" />
 </beans>
