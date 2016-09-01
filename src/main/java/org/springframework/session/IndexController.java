@@ -23,4 +23,9 @@ public class IndexController {
 	public String freez(HttpServletRequest request) {
 		return "me/freez-table-demo";
 	}
+	
+	@RequestMapping(value = "/freez1")
+	public String freez1(HttpServletRequest request) {
+		return "me/freez-table-demo1";
+	}
 }
