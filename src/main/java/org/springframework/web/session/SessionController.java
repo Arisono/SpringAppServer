@@ -1,4 +1,4 @@
-package org.springframework.session;
+package org.springframework.web.session;
 
 
 /** 专门学习session知识的控制器

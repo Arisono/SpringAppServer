@@ -1,4 +1,4 @@
-package org.springframework.util;
+package org.springframework.web.util;
 
 
 
@@ -10,7 +10,7 @@ import java.util.GregorianCalendar;
 
 /**
  * 
- * <p>时间转换工具类</p>
+ * <p>时间转换工具�?</p>
  * 
  * 
  */
@@ -38,7 +38,7 @@ public class DateFormatUtil {
 	
 	/**
 	 * <p>获取当前系统时间</p>
-	 * 通过java.util.Date类获取
+	 * 通过java.util.Date类获�?
 	 * 
 	 * @return 返回java.util.Date类型对象
 	 * @see #getCurrentDate()
@@ -49,7 +49,7 @@ public class DateFormatUtil {
 	
 	/**
 	 * <p>获取当前系统时间</p>
-	 * 通过java.util.Calendar类获取
+	 * 通过java.util.Calendar类获�?
 	 * 
 	 * @return 返回java.util.Date类型对象
 	 * @see Calendar
@@ -115,9 +115,9 @@ public class DateFormatUtil {
 	}
 
 	/**
-	 * <p>获取当前年</p>
+	 * <p>获取当前�?</p>
 	 *
-	 * @return 返回int类型的整数
+	 * @return 返回int类型的整�?
 	 */
 	public static int getCurrentYear(){
 		Calendar c = Calendar.getInstance();
@@ -126,9 +126,9 @@ public class DateFormatUtil {
 
 	/**
 	 *
-	 * <p>获取当前月</p>
+	 * <p>获取当前�?</p>
 	 *
-	 * @return 返回int类型的整数，一位或两位数，范围是：1-12
+	 * @return 返回int类型的整数，�?位或两位数，范围是：1-12
 	 */
 	public static int getCurrentMonth(){
 		Calendar c = Calendar.getInstance();
@@ -136,9 +136,9 @@ public class DateFormatUtil {
 	}
 
 	/**
-	 * <p>获取当前日</p>
+	 * <p>获取当前�?</p>
 	 *
-	 * @return 返回int类型的整数，一位或两位数，范围是：1-31
+	 * @return 返回int类型的整数，�?位或两位数，范围是：1-31
 	 */
 	public static int getCurrentDay(){
 		Calendar c = Calendar.getInstance();
@@ -149,7 +149,7 @@ public class DateFormatUtil {
 	 * <p>获得指定的年，int格式</p>
 	 *
 	 * @param date 指定日期对象
-	 * @return 返回int类型的整数
+	 * @return 返回int类型的整�?
 	 */
 	public static int getCustomYear(Date date) {
 		Calendar c = Calendar.getInstance();
@@ -161,7 +161,7 @@ public class DateFormatUtil {
 	 * <p>获得指定的月，int格式</p>
 	 *
 	 * @param date 指定日期对象
-	 * @return 返回int类型的整数，一位或两位数，范围是：1-12
+	 * @return 返回int类型的整数，�?位或两位数，范围是：1-12
 	 */
 	public static int getCustomMonth(Date date) {
 		Calendar c = Calendar.getInstance();
@@ -173,7 +173,7 @@ public class DateFormatUtil {
 	 * <p>获得指定的日，int格式</p>
 	 *
 	 * @param date 指定日期对象
-	 * @return 返回int类型的整数，一位或两位数，范围是：1-31
+	 * @return 返回int类型的整数，�?位或两位数，范围是：1-31
 	 */
 	public static int getCustomDay(Date date) {
 		Calendar c = Calendar.getInstance();
@@ -185,7 +185,7 @@ public class DateFormatUtil {
 	 * <p>获取当前系统时间的小时数</p>
 	 * 通过java.util.Calendar获取
 	 *
-	 * @return 返回小时数
+	 * @return 返回小时�?
 	 */
 	public static int getCurrentHour() {
 		Calendar calendar = new GregorianCalendar();
@@ -196,7 +196,7 @@ public class DateFormatUtil {
 	 * <p>获取当前系统时间的分钟数</p>
 	 * 通过java.util.Calendar获取
 	 *
-	 * @return 返回分钟数
+	 * @return 返回分钟�?
 	 */
 	public static int getCurrentMinute() {
 		Calendar calendar = new GregorianCalendar();
@@ -204,7 +204,7 @@ public class DateFormatUtil {
 	}
 
 	/**
-	 * <p>获取当前系统时间的秒数</p>
+	 * <p>获取当前系统时间的秒�?</p>
 	 * 通过java.util.Calendar获取
 	 *
 	 * @return 返回秒数
@@ -215,7 +215,7 @@ public class DateFormatUtil {
 	}
 
 	/**
-	 * <p>获得指定的小时(日中的)，int格式</p>
+	 * <p>获得指定的小�?(日中�?)，int格式</p>
 	 * <br>
 	 * @return
 	 */
@@ -247,11 +247,11 @@ public class DateFormatUtil {
 		return c.get(Calendar.SECOND);
 	}
 
-	/**********************我是华丽丽的分割线***************************************************/
+	/**********************我是华丽丽的分割�?***************************************************/
 
 	/**
 	 * <p>
-	 * 获取本月第一天日期（格式如YYYYMMDD）,如果当前日为当月1日,则返回上月第一日
+	 * 获取本月第一天日期（格式如YYYYMMDD�?,如果当前日为当月1�?,则返回上月第�?�?
 	 * </p>
 	 *
 	 * @return
@@ -260,7 +260,7 @@ public class DateFormatUtil {
 		Calendar calendar = new GregorianCalendar();
 		int day = calendar.get(Calendar.DAY_OF_MONTH);
 		int month = 0;
-		if (day == 1)// 当月第一日
+		if (day == 1)// 当月第一�?
 		{
 			calendar.add(Calendar.MONTH, -1);
 		}
@@ -287,7 +287,7 @@ public class DateFormatUtil {
 
 	/**
 	 * <p>
-	 * 获取某个月后的日期格式（yyyyMMdd）
+	 * 获取某个月后的日期格式（yyyyMMdd�?
 	 * </p>
 	 *
 	 * @return
@@ -300,7 +300,7 @@ public class DateFormatUtil {
 
 	/**
 	 * <p>
-	 * 返回日期（格式yyyyMMdd）
+	 * 返回日期（格式yyyyMMdd�?
 	 * </p>
 	 *
 	 * @param timeMillis
@@ -400,7 +400,7 @@ public class DateFormatUtil {
 
 	/**
 	 * <p>获取中文日期格式</p>
-	 * 格式：xxxx年xx月xx日
+	 * 格式：xxxx年xx月xx�?
 	 * 
 	 * @param date
 	 * @return
@@ -411,22 +411,22 @@ public class DateFormatUtil {
 		StringBuffer sb = new StringBuffer();
 		if (dateStr != null && dateStr.length() > 0) {
 			String[] newStr = dateStr.split("-");
-			// 获取月
+			// 获取�?
 			int month = Integer.valueOf(newStr[1]);
-			// 获取日
+			// 获取�?
 			int day = Integer.valueOf(newStr[2]);
-			sb.append(newStr[0]).append("年");
-			sb.append(month).append("月").append(day).append("日");
+			sb.append(newStr[0]).append("�?");
+			sb.append(month).append("�?").append(day).append("�?");
 		}
 		return sb.toString();
 	}*/
 	
 	/**
 	 * <p>获取中文日期时间格式</p>
-	 * 格式：xxxx年xx月xx日<br>
+	 * 格式：xxxx年xx月xx�?<br>
 	 * 
-	 * @param date 指定日期对象，为null时获取当前系统时间
-	 * @return 返回诸如“xxxx年xx月xx日”格式的日期
+	 * @param date 指定日期对象，为null时获取当前系统时�?
+	 * @return 返回诸如“xxxx年xx月xx日�?�格式的日期
 	 */
 	public static String getChineseDate(Date date) {
 		if(date == null)
@@ -436,18 +436,18 @@ public class DateFormatUtil {
 		int dd = getCustomDay(date);
 		
 		StringBuilder sb = new StringBuilder();
-		sb.append(yyyy + "年");
-		sb.append(MM + "月");
-		sb.append(dd + "日");
+		sb.append(yyyy + "�?");
+		sb.append(MM + "�?");
+		sb.append(dd + "�?");
 		return sb.toString();
 	}
 	
 	/**
 	 * <p>获取中文日期时间格式</p>
-	 * 格式：xxxx年xx月xx日 xx时xx分xx秒
+	 * 格式：xxxx年xx月xx�? xx时xx分xx�?
 	 * 
-	 * @param date 指定日期对象，为null时获取当前系统时间
-	 * @return 返回诸如“xxxx年xx月xx日 xx时xx分xx秒”格式的日期
+	 * @param date 指定日期对象，为null时获取当前系统时�?
+	 * @return 返回诸如“xxxx年xx月xx�? xx时xx分xx秒�?�格式的日期
 	 */
 	public static String getChineseDateTime(Date date) {
 		if(date == null)
@@ -461,13 +461,13 @@ public class DateFormatUtil {
 		int ss = getCustomSecond(date);
 		
 		StringBuilder sb = new StringBuilder();
-		sb.append(yyyy + "年");
-		sb.append(MM + "月");
-		sb.append(dd + "日");
+		sb.append(yyyy + "�?");
+		sb.append(MM + "�?");
+		sb.append(dd + "�?");
 		sb.append(" ");
-		sb.append(HH + "时");
-		sb.append(mm + "分");
-		sb.append(ss + "秒");
+		sb.append(HH + "�?");
+		sb.append(mm + "�?");
+		sb.append(ss + "�?");
 		
 		return sb.toString();
 	}
@@ -475,11 +475,11 @@ public class DateFormatUtil {
 	/**
 	 * add by lipp
 	 * <p>
-	 * 获取xxxx年xx月xx日 日期格式。
+	 * 获取xxxx年xx月xx�? 日期格式�?
 	 * </p>
 	 * 
 	 * @param date
-	 *            格式必须是2009-03-21字符串
+	 *            格式必须�?2009-03-21字符�?
 	 * @return
 	 */
 	public static String getChinaDateFormat(String date) {
@@ -487,18 +487,18 @@ public class DateFormatUtil {
 		StringBuffer sb = new StringBuffer();
 		if (date != null && date.length() > 0) {
 			String[] newStr = date.split("-");
-			// 获取月
+			// 获取�?
 			int month = Integer.valueOf(newStr[1]);
-			// 获取日
+			// 获取�?
 			int day = Integer.valueOf(newStr[2]);
-			sb.append(newStr[0]).append("年");
-			sb.append(month).append("月").append(day).append("日");
+			sb.append(newStr[0]).append("�?");
+			sb.append(month).append("�?").append(day).append("�?");
 		}
 		return sb.toString();
 	}
 
 	/**
-	 * 判断一个日期字符串是否合法
+	 * 判断�?个日期字符串是否合法
 	 * 
 	 * @param date
 	 * @param format
@@ -520,7 +520,7 @@ public class DateFormatUtil {
 	/**
 	 * add by gongtao
 	 * <P>
-	 * 将字符串类型的日期格式 转换为 符合要求的日期格式
+	 * 将字符串类型的日期格�? 转换�? 符合要求的日期格�?
 	 * </P>
 	 * 
 	 * @param date
@@ -545,7 +545,7 @@ public class DateFormatUtil {
 	/**
 	 * add by gongtao
 	 * <P>
-	 * 将Date类型的日期格式 转换为 符合要求的 String日期格式
+	 * 将Date类型的日期格�? 转换�? 符合要求�? String日期格式
 	 * </P>
 	 * 
 	 * @param date
@@ -564,7 +564,7 @@ public class DateFormatUtil {
 	/**
 	 * add by gongtao
 	 * <P>
-	 * 将字符串类型的日期格式 转换为 符合要求的 Date类型的日期格式
+	 * 将字符串类型的日期格�? 转换�? 符合要求�? Date类型的日期格�?
 	 * </P>
 	 * 
 	 * @param date
@@ -588,11 +588,11 @@ public class DateFormatUtil {
 	 * add by gongtao 计算指定日期时间之间的时间差
 	 * 
 	 * @param beginStr
-	 *            开始日期字符串
+	 *            �?始日期字符串
 	 * @param endStr
-	 *            结束日期字符串
+	 *            结束日期字符�?
 	 * @param f
-	 *            时间差的形式0-秒,1-分种,2-小时,3--天 日期时间字符串格式:yyyyMMddHHmmss
+	 *            时间差的形式0-�?,1-分种,2-小时,3--�? 日期时间字符串格�?:yyyyMMddHHmmss
 	 * */
 	public static int getInterval(String beginStr, String endStr, int f) {
 		int hours = 0;
@@ -601,10 +601,10 @@ public class DateFormatUtil {
 			Date endDate = yMd_Hms.parse(endStr);
 			long millisecond = endDate.getTime() - beginDate.getTime(); // 日期相减获取日期差X(单位:毫秒)
 			/**
-			 * Math.abs((int)(millisecond/1000)); 绝对值 1秒 = 1000毫秒
-			 * millisecond/1000 --> 秒 millisecond/1000*60 - > 分钟
+			 * Math.abs((int)(millisecond/1000)); 绝对�? 1�? = 1000毫秒
+			 * millisecond/1000 --> �? millisecond/1000*60 - > 分钟
 			 * millisecond/(1000*60*60) -- > 小时 millisecond/(1000*60*60*24) -->
-			 * 天
+			 * �?
 			 * */
 			switch (f) {
 			case 0: // second
@@ -635,7 +635,7 @@ public class DateFormatUtil {
 	 * @throws ParseException
 	 */
 	public static Date getStartDateInterval(String starttime, int days) {
-		// 格式化起始时间 yyyyMMdd
+		// 格式化起始时�? yyyyMMdd
 		Date startDate = null;
 		try {
 			startDate = yyyy_MM_dd.parse(starttime);
@@ -680,7 +680,7 @@ public class DateFormatUtil {
 	}
 	
 	/**
-	 * 获取本月第一天
+	 * 获取本月第一�?
 	 * @return
 	 */
 	public static Date getFristDayOfMonth() {
@@ -694,7 +694,7 @@ public class DateFormatUtil {
 	}
 	
 	/**
-	 * 获取本月最后一天
+	 * 获取本月�?后一�?
 	 * @return
 	 */
 	public static Date getLastDayOfMonth() {
@@ -709,7 +709,7 @@ public class DateFormatUtil {
 	}
 	
 	/**
-	 * 获得本周一的日期
+	 * 获得本周�?的日�?
 	 * @return
 	 * @throws ParseException 
 	 */
@@ -742,7 +742,7 @@ public class DateFormatUtil {
 	
 	/**
 	 * 字符串时间格式转换为 Date
-	 * @param date 此格式 yyyy-MM-dd HH:mm:ss
+	 * @param date 此格�? yyyy-MM-dd HH:mm:ss
 	 * @return
 	 * @throws ParseException
 	 */
@@ -757,7 +757,7 @@ public class DateFormatUtil {
 	*/
 	/**
 	 * 字符串时间格式转换为 Date
-	 * @param date 此格式 yyyy-MM-dd
+	 * @param date 此格�? yyyy-MM-dd
 	 * @return
 	 * @throws ParseException
 	 */
@@ -790,7 +790,7 @@ public class DateFormatUtil {
 	 * @param beginDate
 	 * @param endDate
 	 * @param f 
-	 *  时间差的形式0:秒,1:分种,2:小时,3:天 
+	 *  时间差的形式0:�?,1:分种,2:小时,3:�? 
 	 * @return
 	 */
 	public static int getDifferenceNum(Date beginDate,Date endDate,int f){
@@ -802,10 +802,10 @@ public class DateFormatUtil {
 			// 日期相减获取日期差X(单位:毫秒)
 			long millisecond = endDate.getTime() - beginDate.getTime(); 
 			/**
-			 * Math.abs((int)(millisecond/1000)); 绝对值 1秒 = 1000毫秒
-			 * millisecond/1000 --> 秒 millisecond/1000*60 - > 分钟
+			 * Math.abs((int)(millisecond/1000)); 绝对�? 1�? = 1000毫秒
+			 * millisecond/1000 --> �? millisecond/1000*60 - > 分钟
 			 * millisecond/(1000*60*60) -- > 小时 millisecond/(1000*60*60*24) -->
-			 * 天
+			 * �?
 			 * */
 			switch (f) {
 			case 0: // second
@@ -825,13 +825,13 @@ public class DateFormatUtil {
 	
 
 	/**
-	 * <p>比较两个日期的大小,精确到秒</p>
+	 * <p>比较两个日期的大�?,精确到秒</p>
 	 * 
 	 * @param d1
 	 * @param d2
 	 * @author lipp@icloud-edu.com
 	 * @date 2014-06-03
-	 * @return 返回一个long类型的整数，若大于0表示第一个日期晚于第二个日期，小于0表示第一个日期早于第二个日期，否则相等
+	 * @return 返回�?个long类型的整数，若大�?0表示第一个日期晚于第二个日期，小�?0表示第一个日期早于第二个日期，否则相�?
 	 */
 	public static long compareEachOther(Date d1, Date d2){
 		if(d1 == null || d2 == null)

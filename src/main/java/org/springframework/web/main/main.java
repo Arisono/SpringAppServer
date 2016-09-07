@@ -1,4 +1,4 @@
-package org.springframework.main;
+package org.springframework.web.main;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;

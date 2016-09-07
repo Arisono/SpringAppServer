@@ -4,6 +4,7 @@ import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
 import javax.annotation.Resource;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -16,8 +17,6 @@ import org.springframework.samples.mvc.jpa.service.NewsService;
 import org.springframework.samples.mvc.jpa.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.util.DateFormatUtil;
-import org.springframework.util.HttpRequestUtils;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -26,6 +25,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.util.DateFormatUtil;
+import org.springframework.web.util.HttpRequestUtils;
 
 /**
  * @author Arison
@@ -52,6 +53,7 @@ public class SimpleController {
 		Map<String, Object> resultBody = new HashMap<String, Object>();
 		String ipAddress = getIPAddress(request);// 获取客户端ip地址
 		Enumeration headerNames = request.getHeaderNames();
+		request.getHeader("sessionUser"); 
 		while (headerNames.hasMoreElements()) {
 			String key = (String) headerNames.nextElement();
 			String value = request.getHeader(key);

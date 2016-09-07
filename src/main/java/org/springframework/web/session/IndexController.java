@@ -1,4 +1,4 @@
-package org.springframework.session;
+package org.springframework.web.session;
 
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Controller;
