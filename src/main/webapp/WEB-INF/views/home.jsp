@@ -23,6 +23,7 @@
 <a class="ui-button ui-widget ui-corner-all" href="<c:url value="/index" />">进入中文界面</a>
 </h1>
 <p>Recommended: Using a Web Developer tool such a Firebug to inspect the client/server interaction</p>
+
 <div id="tabs">
 	<ul>
 		<li><a href="#simple">Simple</a></li>

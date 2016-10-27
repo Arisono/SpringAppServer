@@ -39,6 +39,10 @@ public class SimpleController {
 
 	@Resource
 	private NewsService newsService;
+	
+	
+	
+	
 
 	/**
 	 * 获取客户的请求头信息 ip地址,请求头信息,参数,缓存等等
@@ -95,7 +99,11 @@ public class SimpleController {
 				DateFormatUtil.getFormatDate(httpSession.getCreationTime()));
 		resultBody.put("isNew", httpSession.isNew());
 		resultBody.put("HttpSessionId", httpSession.getId());
-
+        /*  try {
+			Thread.sleep(15000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}*/
 		return resultBody;
 	}
 
@@ -323,7 +331,6 @@ public class SimpleController {
 	// 通过model进行使用
 	@RequestMapping(value = "/index4", method = RequestMethod.GET)
 	public @ResponseBody String index(Model model) {
-
 		return "jsp";
 	}
 

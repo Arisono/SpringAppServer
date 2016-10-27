@@ -86,12 +86,9 @@
 			<version>1.4.1.RELEASE</version>
 		</dependency>
 		<!-- oracle -->
-		<!-- 
-		<dependency> 
-			<groupId>com.oracle</groupId>
-		 	<artifactId>ojdbc14</artifactId> 
-	     <version>10.2.0.4</version> </dependency> -->
-	     
+		<!-- <dependency> <groupId>com.oracle</groupId> <artifactId>ojdbc14</artifactId> 
+			<version>10.2.0.4</version> </dependency> -->
+
 		<!-- Hibernate -->
 		<dependency>
 			<groupId>org.hibernate</groupId>
@@ -103,11 +100,11 @@
 			<artifactId>hibernate-entitymanager</artifactId>
 			<version>${hibernate.version}</version>
 		</dependency>
-		   <!-- https://mvnrepository.com/artifact/commons-codec/commons-codec -->
+		<!-- https://mvnrepository.com/artifact/commons-codec/commons-codec -->
 		<dependency>
-		    <groupId>commons-codec</groupId>
-		    <artifactId>commons-codec</artifactId>
-		    <version>1.10</version>
+			<groupId>commons-codec</groupId>
+			<artifactId>commons-codec</artifactId>
+			<version>1.10</version>
 		</dependency>
 
 		<!--mysql -->
@@ -128,6 +125,20 @@
 			<groupId>com.alibaba</groupId>
 			<artifactId>fastjson</artifactId>
 			<version>1.2.7</version>
+		</dependency>
+
+		<!-- velocity -->
+		<!-- https://mvnrepository.com/artifact/org.apache.velocity/velocity -->
+		<dependency>
+			<groupId>org.apache.velocity</groupId>
+			<artifactId>velocity</artifactId>
+			<version>1.7</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/velocity-tools/velocity-tools -->
+		<dependency>
+			<groupId>velocity-tools</groupId>
+			<artifactId>velocity-tools</artifactId>
+			<version>1.4</version>
 		</dependency>
 
 		<!-- AspectJ -->

@@ -9,7 +9,7 @@ public class TimeoutCallableProcessingInterceptor extends CallableProcessingInte
 
 	@Override
 	public <T> Object handleTimeout(NativeWebRequest request, Callable<T> task) throws Exception {
-		throw new IllegalStateException("[" + task.getClass().getName() + "] timed out");
+		throw new IllegalStateException("[" + task.getClass().getName() + "] call timed out ");
 	}
 
 }

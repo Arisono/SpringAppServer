@@ -1,11 +1,14 @@
-<web-app xmlns="http://java.sun.com/xml/ns/javaee"
-      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-      xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+<web-app  xmlns="http://java.sun.com/xml/ns/javaee"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance 
+      http://www.springmodules.org/schema/cache/springmodules-cache.xsd 
+      http://www.springmodules.org/schema/cache/springmodules-ehcache.xsd"
+      xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+      http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
       version="3.0">
       
-      <!--编码过滤  -->
-		<filter>  
-        <filter-name>characterEncodingFilter</filter-name>  
+      <!--编码过滤 可以解决中文乱码问题 -->
+	<!-- 	<filter>  
+        <filter-name>characterEncodingFilter</filter-name>
         <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>  
         <init-param>  
             <param-name>encoding</param-name>  
@@ -14,12 +17,15 @@
         <init-param>  
             <param-name>forceEncoding</param-name>  
             <param-value>true</param-value>  
-        </init-param>  
-    </filter>  
-    <filter-mapping>  
+        </init-param> 
+        <async-supported>true</async-supported>
+       </filter>  -->
+       
+        
+     <!--  <filter-mapping>  
         <filter-name>characterEncodingFilter</filter-name>  
         <url-pattern>/*</url-pattern>  
-    </filter-mapping>
+      </filter-mapping> -->
     
 	<!-- The definition of the Root Spring Container shared by all Servlets and Filters -->
 	<context-param>
@@ -36,13 +42,14 @@
 		<filter-name>csrfFilter</filter-name>
 		<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
 		<async-supported>false</async-supported>
-	 </filter>
-	<filter-mapping>
-		<filter-name>csrfFilter</filter-name>
-		<url-pattern>/*</url-pattern>
-	</filter-mapping> -->
-    
+	    </filter>
+		<filter-mapping>
+			<filter-name>csrfFilter</filter-name>
+			<url-pattern>/*</url-pattern>
+		</filter-mapping> -->
 	<!-- Processes application requests -->
+	
+	
 	<servlet>
 		<servlet-name>appServlet</servlet-name>
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
