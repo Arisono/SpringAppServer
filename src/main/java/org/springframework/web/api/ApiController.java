@@ -40,6 +40,17 @@ public class ApiController {
 	 * @param request
 	 * @return
 	 */
+	@RequestMapping(value = "/api/sign" ,method = RequestMethod.GET,produces = "application/json; charset=utf-8")
+	@ResponseBody
+	public String sign(String param1,String param2) {
+		System.out.println(param1+""+param2);
+		return param1+""+param2;
+	}
+	
+	/**Get«Î«Û
+	 * @param request
+	 * @return
+	 */
 	@RequestMapping(value = "/api/get1" ,method = RequestMethod.GET,produces = "application/json; charset=utf-8")
 	@ResponseBody
 	public String get1(String param1,String param2) {
